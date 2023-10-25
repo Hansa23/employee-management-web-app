@@ -1,0 +1,18 @@
+version: '3'
+services:
+  web:
+    image: node:latest
+    container_name: my-node-app
+    working_dir: /app
+    command: npm start
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    depends_on:
+      - database
+  database:
+    image: mongo:latest
+    container_name: my-mongo-db
+    ports:
+      - "27017:27017"
